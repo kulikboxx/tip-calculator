@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <title>Tip Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="top">
+            <h1>Tip Calculator</h1>
+        </div>
+        <div class="bottom">
+            <div class="box">
+                <label for="amount">Bill Amount:*</label>
+                <input type="number" class="amount" min="0">
+            </div>
+            <div class="box">
+                <label for="people">How many people?*</label>
+                <input type="number" class="peoples" min="0">
+            </div>
+            <div class="box">
+                <label for="tip">Tip:*</label>
+                <select class="tip">
+                    <option value="0" disabled selected>--select option--</option>
+                    <option value="5">5%</option>
+                    <option value="10">10%</option>
+                    <option value="15">15%</option>
+                    <option value="20">20%</option>
+                </select>
+            </div>
+            <div class="cost-info">
+                <p class="cost">Total per person: <span class="result">0.00</span> USD</p>
+                <button class="clear">Clear</button>
+            </div>
+            <span class="error"></span>
+        </div>
+    </div>
+
+
+    <script src="js/main.js"></script>
+</body>
+
+
+</html>
