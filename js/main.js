@@ -13,35 +13,25 @@ const showResult = () => {
 }
 
 const checkInputs = () => {
+    result.textContent = '0.00';
+
     if (+amount.value === 0) amount.value = '';
     if (+peoples.value === 0) peoples.value = '';
 
     if (amount.value !== '' && peoples.value === '' && select.value == 0) {
-        error.style.display = 'block';
         error.textContent = 'Please fill out all required fields!';
-        result.textContent = '0.00';
     } else if (amount.value === '' && peoples.value !== '' && select.value == 0) {
-        error.style.display = 'block';
         error.textContent = 'Please fill out all required fields!';
-        result.textContent = '0.00';
     } else if (amount.value === '' && peoples.value === '' && select.value !== 0) {
-        error.style.display = 'block';
         error.textContent = 'Please fill out all required fields!';
-        result.textContent = '0.00';
     } else if (amount.value !== '' && peoples.value === '' && select.value !== 0) {
-        error.style.display = 'block';
         error.textContent = 'Please fill out all required fields!';
-        result.textContent = '0.00';
     } else if (amount.value === '' && peoples.value !== '' && select.value !== 0) {
-        error.style.display = 'block';
         error.textContent = 'Please fill out all required fields!';
-        result.textContent = '0.00';
     } else if (amount.value !== '' && peoples.value !== '' && select.value == 0) {
-        error.style.display = 'block';
         error.textContent = 'Please fill out all required fields!';
-        result.textContent = '0.00';
     } else {
-        error.style.display = 'none';
+        error.textContent = '';
         showResult();
     }
 }
@@ -54,7 +44,7 @@ clear.addEventListener('click', () => {
     peoples.value = '';
     select.value = 0;
 
-    if (error.style.display === 'block') {
-        error.style.display = 'none';
+    if (error.textContent !== '') {
+        error.textContent = '';
     }
 });
