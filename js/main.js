@@ -43,6 +43,7 @@ clear.addEventListener('click', () => {
     amount.value = '';
     peoples.value = '';
     select.value = 0;
+    result.textContent = '0.00';
 
     if (error.textContent !== '') {
         error.textContent = '';
