@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
 const messages = {
-    reqField: "Please fill out all required fields!",
+    reqField: 'Please fill out all required fields!'
 };
 
 function showError(alert) {
@@ -40,7 +40,6 @@ function checkFields(selector) {
 };
 
 document.addEventListener('input', () => checkFields('.input'));
-
 document.querySelector('.clear').addEventListener('click', () => {
     document.querySelectorAll('.input').forEach(input => input.value = 0);
     document.querySelector('.result').textContent = '0';
