@@ -1,51 +1,48 @@
-'use strict';
+"use strict";
 
-const amount = document.querySelector('.amount'),
-    peoples = document.querySelector('.peoples'),
-    select = document.querySelector('.tip'),
-    result = document.querySelector('.result'),
-    clear = document.querySelector('.clear'),
-    error = document.querySelector('.error');
+const messages = {
+    reqField: "Please fill out all required fields!",
+};
 
-const showResult = () => {
-    let res = (+amount.value + ((+amount.value * select.value) / 100)) / +peoples.value;
-    result.textContent = res.toFixed(2);
+function showError(alert) {
+    document.querySelector('.error').textContent = alert;
 }
 
-const checkInputs = () => {
-    result.textContent = '0.00';
+function showResult(amount, people, tip) {
+    let result = document.querySelector('.result');
+    result.textContent = ((amount + (amount * tip) / 100) / people).toFixed(2);
+};
 
-    if (+amount.value === 0) amount.value = '';
-    if (+peoples.value === 0) peoples.value = '';
+function checkFields(selector) {
+    let amount, people, tip,
+        inputs = document.querySelectorAll(selector);
 
-    if (amount.value !== '' && peoples.value === '' && select.value == 0) {
-        error.textContent = 'Please fill out all required fields!';
-    } else if (amount.value === '' && peoples.value !== '' && select.value == 0) {
-        error.textContent = 'Please fill out all required fields!';
-    } else if (amount.value === '' && peoples.value === '' && select.value !== 0) {
-        error.textContent = 'Please fill out all required fields!';
-    } else if (amount.value !== '' && peoples.value === '' && select.value !== 0) {
-        error.textContent = 'Please fill out all required fields!';
-    } else if (amount.value === '' && peoples.value !== '' && select.value !== 0) {
-        error.textContent = 'Please fill out all required fields!';
-    } else if (amount.value !== '' && peoples.value !== '' && select.value == 0) {
-        error.textContent = 'Please fill out all required fields!';
+    inputs.forEach(input => {
+        switch (input.getAttribute('id')) {
+            case 'amount':
+                amount = +input.value;
+                break;
+            case 'people':
+                people = +input.value;
+                break;
+            case 'tip':
+                tip = +input.value;
+                break;
+        }
+    });
+
+    if (amount == 0 || people == 0 || tip == 0) {
+        showError(messages.reqField);
     } else {
-        error.textContent = '';
-        showResult();
+        showError();
+        showResult(amount, people, tip);
     }
-}
+};
 
-amount.addEventListener('focusout', checkInputs);
-peoples.addEventListener('focusout', checkInputs);
-select.addEventListener('change', checkInputs);
-clear.addEventListener('click', () => {
-    amount.value = '';
-    peoples.value = '';
-    select.value = 0;
-    result.textContent = '0.00';
+document.addEventListener('input', () => checkFields('.input'));
 
-    if (error.textContent !== '') {
-        error.textContent = '';
-    }
+document.querySelector('.clear').addEventListener('click', () => {
+    document.querySelectorAll('.input').forEach(input => input.value = 0);
+    document.querySelector('.result').textContent = '0';
+    showError();
 });

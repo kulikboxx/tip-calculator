@@ -22,15 +22,15 @@
         <div class="bottom">
             <div class="box">
                 <label for="amount">Bill Amount:*</label>
-                <input type="number" class="amount" min="0">
+                <input id="amount" type="number" value="0" class="input" min="0">
             </div>
             <div class="box">
                 <label for="people">How many people?*</label>
-                <input type="number" class="peoples" min="0">
+                <input id="people" type="number" value="0" class="input" min="0">
             </div>
             <div class="box">
-                <label for="tip">Tip:*</label>
-                <select class="tip">
+                <label>Tip:*</label>
+                <select id="tip" class="input">
                     <option value="0" disabled selected>--select option--</option>
                     <option value="5">5%</option>
                     <option value="10">10%</option>
@@ -39,7 +39,7 @@
                 </select>
             </div>
             <div class="cost-info">
-                <p class="cost">Total per person: <span class="result">0.00</span> USD</p>
+                <p class="cost">Total per person: <span class="result">0</span> USD</p>
                 <button class="clear">Clear</button>
             </div>
             <span class="error"></span>

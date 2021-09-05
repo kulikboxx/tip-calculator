@@ -68,9 +68,8 @@ body {
   font-size: 2rem;
 }
 
-.wrapper .bottom .box .amount,
-.wrapper .bottom .box .peoples,
-.wrapper .bottom .box .tip {
+.wrapper .bottom .box input,
+.wrapper .bottom .box select {
   padding: 0.6em 1em;
   width: 100%;
   font-size: 1.6rem;
